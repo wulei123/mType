@@ -1,8 +1,28 @@
 const {app,BrowserWindow} = require('electron')
+const glob = require('glob')
 
-const path = `file://${__dirname}/index.html`
+function initialize(){
+	loadMainProcess()
+	createWindow()
+}
 
-app.on('ready',()=>{
-	const win = new BrowserWindow({width:800,height:600})
-	win.loadURL(path)
-})
+function createWindow(){
+	app.on('ready',()=>{
+		const path = `file://${__dirname}/index.html`
+		const win = new BrowserWindow({width:800,height:600})
+		win.loadURL(path)
+	})
+}
+
+function loadMainProcess(){
+	const path = `${__dirname}/main-process/**/*.js`
+	const files = glob.sync(path)
+	console.log(files)
+	files.forEach((file)=>{require(file)})
+}
+
+initialize()
+
+
+
+
