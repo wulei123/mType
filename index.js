@@ -17,8 +17,7 @@ function createWindow(){
 function loadMainProcess(){
 	const path = `${__dirname}/main-process/**/*.js`
 	const files = glob.sync(path)
-	console.log(files)
-	files.forEach((file)=>{require(file)})
+	files.forEach((file)=>require(file))
 }
 
 initialize()

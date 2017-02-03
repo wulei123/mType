@@ -4,7 +4,7 @@
   "description": "this is a markdown editor powered by electron ",
   "main": "index.js",
   "scripts": {
-    "start":"electron .",
+    "start": "electron .",
     "test": "test"
   },
   "repository": {
@@ -33,7 +33,9 @@
     "electron-packager": "^8.4.0",
     "electron-prebuilt": "^1.4.13",
     "highlight.js": "^9.9.0",
+    "marked": "^0.3.6",
     "mocha": "^3.2.0",
-    "spectron": "^3.4.1"
+    "spectron": "^3.4.1",
+    "vue": "^2.1.10"
   }
 }

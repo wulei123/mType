@@ -3,8 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>mType</title>
+	<link rel="stylesheet" href="themes/default/index.css">
+	<link rel="import" href="sections/editor/editor.html">
+	<link rel="stylesheet" href="https://cdn.bootcss.com/github-markdown-css/2.4.1/github-markdown.css">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/default.min.css">
+  	<script src="node_modules/vue/dist/vue.js"></script>
 </head>
 <body>
-	I'm myType
+	<main></main>
+	<script>
+		//all sections will be imported
+		require('./sections/imports')
+	</script>
 </body>
 </html>
