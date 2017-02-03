@@ -1,0 +1,39 @@
+{
+  "name": "mtype",
+  "version": "1.0.0",
+  "description": "this is a markdown editor powered by electron ",
+  "main": "index.js",
+  "scripts": {
+    "start":"electron .",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wulei123/mType.git"
+  },
+  "keywords": [
+    "markdown",
+    "editor",
+    "javascript",
+    "nodejs",
+    "electron"
+  ],
+  "author": "wulei",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wulei123/mType/issues"
+  },
+  "homepage": "https://github.com/wulei123/mType#readme",
+  "dependencies": {
+    "electron": "^1.4.13",
+    "highlight.js": "^9.9.0"
+  },
+  "devDependencies": {
+    "electron-installer-windows": "^0.2.0",
+    "electron-packager": "^8.4.0",
+    "electron-prebuilt": "^1.4.13",
+    "highlight.js": "^9.9.0",
+    "mocha": "^3.2.0",
+    "spectron": "^3.4.1"
+  }
+}
