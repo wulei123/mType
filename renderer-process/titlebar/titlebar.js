@@ -25,12 +25,23 @@ let tabs = new Vue({
 					console.error('opps index < -1 ???')
 				}
 			})
+		},
+		countUntitled:function (){
+			let count = 0;
+			for(let i = 0; i < this.tabs.length;i++){
+				if(this.tabs[i].title.indexOf('untitled')!==-1){count++}
+			}
+			return count
+		},
+		addNew:function (){
+			ipcRenderer.on('new-file',(event,arg)=>{
+				let template = {title:'untitled'+String(this.countUntitled()),content:''}
+				this.tabs.push(template)
+				
+			})
 		}
 	}
 })
 
 tabs.getValue()
-
-ipcRenderer.on('to-alert',(event,arg)=>{
-	alert(arg)
-})
+tabs.addNew()

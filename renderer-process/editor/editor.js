@@ -6,8 +6,8 @@ let highlight = require('highlight.js')
 let editor = new Vue({
   el: '#editor',
   data: {
-    index: 0,
-    input: '# hello'
+    index: -1,
+    input: '# mType'
   },
   methods:{
     getValue:function (){
@@ -36,7 +36,7 @@ let editor = new Vue({
 })
 
 editor.$watch('input',function (newValue,oldValue){
-  let arg = {index:0,content:this.input}
+  let arg = {index:this.index,content:this.input}
   ipcRenderer.send('content-to-title',arg)
 })
 

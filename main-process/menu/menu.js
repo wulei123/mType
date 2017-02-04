@@ -1,11 +1,14 @@
-const {app, Menu} = require('electron')
+const {app, Menu, BrowserWindow} = require('electron')
 
 const template = [
   {
     label: 'File',
     submenu: [
       {
-        label: 'new'
+        label: 'new',
+        click:function (item, focusedWindow){
+          focusedWindow.webContents.send('new-file','add-new')
+        }
       },
       {
         label: 'open'
