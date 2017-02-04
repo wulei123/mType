@@ -7,7 +7,9 @@ html,body,main{
 .container,#editor{
 	height: 100%;
 	width: 100%;
-	padding: 0
+}
+.container{
+  padding: 50px 0 0 0;
 }
 textarea, div {
   display: inline-block;
@@ -15,7 +17,7 @@ textarea, div {
   height: 100%;
   vertical-align: top;
   box-sizing: border-box;
-  padding: 0 20px;
+  padding: 0px 20px;
 }
 
 textarea {
@@ -26,5 +28,39 @@ textarea {
   background-color: #f6f6f6;
   font-size: 14px;
   font-family: 'Monaco', courier, monospace;
-  padding: 20px;
+}
+.titlebar{
+  position: absolute;
+  top: 0;
+  padding:0;
+  height: 50px;
+  width: 100%;
+  background: blue;
+}
+.titlebar>.tabs{
+    margin: 0;
+    height: 100%;
+    width: 90%;
+    background: red;
+}
+.titlebar>.tabs>.tab{
+    width: 150px;
+    height: 100%;
+    background: green;
+    padding: 15px;
+}
+.titlebar>.tabs>.tab>.file-title{
+    width: 90px;
+    padding: 0;
+    line-height: 100%;
+    overflow: hidden;
+    text-align: left;
+    background: purple;
+}
+.titlebar>.tabs>.tab>.close{
+  height: 20px;
+  width: 20px;
+  float: right;
+  padding:0;
+  background: black;
 }

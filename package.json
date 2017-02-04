@@ -26,6 +26,7 @@
   "homepage": "https://github.com/wulei123/mType#readme",
   "dependencies": {
     "electron": "^1.4.13",
+    "electron-json-storage": "^3.0.1",
     "highlight.js": "^9.9.0"
   },
   "devDependencies": {
