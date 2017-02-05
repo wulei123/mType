@@ -6,12 +6,18 @@ const template = [
     submenu: [
       {
         label: 'new',
-        click:function (item, focusedWindow){
-          focusedWindow.webContents.send('new-file','add-new')
+        click(item, focusedWindow){
+          focusedWindow.webContents.send('new-file')
         }
       },
       {
         label: 'open'
+      },
+      {
+        label: 'save',
+        click(item, focusedWindow){
+          focusedWindow.webContents.send('to-save-this-file')
+        }
       }
     ]
   },

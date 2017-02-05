@@ -7,11 +7,13 @@ let editor = new Vue({
   el: '#editor',
   data: {
     index: -1,
-    input: '# mType'
+    title:'',
+    input: '# hello'
   },
   methods:{
     getValue:function (){
       ipcRenderer.on('content-get-values',(event,arg)=>{
+        this.title = arg.title;
         this.index = arg.index;
         this.input = arg.content;
         console.log(this.input)
@@ -42,5 +44,12 @@ editor.$watch('input',function (newValue,oldValue){
 
 editor.getValue()
 
-
+ipcRenderer.on('to-save-this-file',(event)=>{
+  let arg = {
+    index:editor.index,
+    title:editor.title,
+    content:editor.input
+  }
+  ipcRenderer.send('to-save-file',arg)
+})
 

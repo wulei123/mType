@@ -3,7 +3,7 @@
 		<div class="tabs" id="tabs">
 			<div v-for="(tab,index) in tabs" @click="sendValue(index,tab.content)" class="tab">
 				<div onselectstart="return false" class="file-title">{{tab.title}}</div>
-				<div class="close"></div>
+				<div class="close" @click="close(index)"></div>
 			</div>
 		</div>
 		<script>

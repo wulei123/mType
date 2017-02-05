@@ -1,4 +1,6 @@
 const {ipcRenderer} = require('electron')
+const {dialog} = require('electron').remote
+const fs = require('fs')
 
 let tabs = new Vue({
 	el: '#tabs',
@@ -10,9 +12,14 @@ let tabs = new Vue({
 			}
 		]
 	},
+	created(){
+		if(this.tabs.length==1){
+			this.sendValue(0,this.tabs[0].content)
+		}
+	},
 	methods:{
 		sendValue:function (index,content){
-			let arg = {index:index,content:content}
+			let arg = {index:index,title:this.tabs[index].title,content:content}
 			ipcRenderer.send('title-to-content',arg)
 			console.log(arg)
 		},
@@ -35,13 +42,54 @@ let tabs = new Vue({
 		},
 		addNew:function (){
 			ipcRenderer.on('new-file',(event,arg)=>{
-				let template = {title:'untitled'+String(this.countUntitled()),content:''}
+				let template = {title:'untitled'+String(this.countUntitled()),content:'# mType'}
 				this.tabs.push(template)
 				
+			})
+		},
+		close:function (index){
+			if(this.tabs[index].content){
+				let options = {
+					type:'question',
+					message:'content has changed, do you want to save it?',
+					buttons:['ok','no','cancel']
+				}
+				let arg = {
+					index:index,
+					title:this.tabs[index].title,
+					content:this.tabs[index].content
+				}
+				dialog.showMessageBox(options,(i)=>{
+					switch(i){
+						case 0:
+							ipcRenderer.send('to-save-file',arg)
+							break;
+						case 1:
+							this.removeTab(index)
+							break;
+
+					}
+				})
+			}
+		},
+		removeTab:function (index){
+			this.tabs.splice(index,1);
+			this.sendValue(index-1,this.tabs[index-1].content);
+		},
+		saveFile:function (){
+			ipcRenderer.on('save-file',(event,arg)=>{
+				console.log(arg)
+				fs.writeFile(arg.filename,arg.content,(err)=>{
+					if(err) alert(err);
+					alert('saved')
+					this.removeTab(arg.index)
+				})
 			})
 		}
 	}
 })
 
+
 tabs.getValue()
 tabs.addNew()
+tabs.saveFile()
