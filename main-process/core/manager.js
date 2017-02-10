@@ -22,3 +22,15 @@ ipcMain.on('to-save-file',(event,arg)=>{
 		event.sender.send('save-file',arg)
 	})
 })
+ipcMain.on('open-file',(event,arg)=>{
+	dialog.showOpenDialog({
+		title:'open file or directory mType',
+		filters:[
+			{name:'Markdown Files',extensions:['md']},
+			{name:'All Files',extensions:['*']}
+		],
+		properties:['openFile','openDirectory']
+	},(filepath)=>{
+		event,sender.send('alert-test',filepath)
+	})
+})

@@ -53,3 +53,7 @@ ipcRenderer.on('to-save-this-file',(event)=>{
   ipcRenderer.send('to-save-file',arg)
 })
 
+ipcRenderer.on('alert-test',(event,arg)=>{
+  alert(arg)
+})
+

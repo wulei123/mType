@@ -1,4 +1,4 @@
-const {app, Menu, BrowserWindow} = require('electron')
+const {app, Menu, BrowserWindow,dialog} = require('electron')
 
 const template = [
   {
@@ -11,7 +11,18 @@ const template = [
         }
       },
       {
-        label: 'open'
+        label: 'open',
+        click(item, focusedWindow){
+          dialog.showOpenDialog({
+              title:'open file or directory mType',
+              filters:[
+                  {name:'Markdown Files',extensions:['md']},
+                  {name:'All Files',extensions:['*']}
+              ],
+              properties:['openFile','openDirectory']
+          })
+          focusedWindow.webContents.send('open-file')
+        }
       },
       {
         label: 'save',
