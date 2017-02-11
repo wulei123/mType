@@ -85,6 +85,11 @@ let tabs = new Vue({
 					this.removeTab(arg.index)
 				})
 			})
+		},
+		openFile:function (){
+			ipcRenderer.on('open-file-path',(event,arg)=>{
+				alert(arg)
+			})
 		}
 	}
 })
@@ -93,3 +98,4 @@ let tabs = new Vue({
 tabs.getValue()
 tabs.addNew()
 tabs.saveFile()
+tabs.openFile()

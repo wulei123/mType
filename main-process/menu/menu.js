@@ -20,8 +20,9 @@ const template = [
                   {name:'All Files',extensions:['*']}
               ],
               properties:['openFile','openDirectory']
+          },(path)=>{
+              focusedWindow.webContents.send('open-file-path',path)
           })
-          focusedWindow.webContents.send('open-file')
         }
       },
       {
