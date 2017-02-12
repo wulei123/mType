@@ -33,6 +33,8 @@
     "electron-installer-windows": "^0.2.0",
     "electron-packager": "^8.4.0",
     "electron-prebuilt": "^1.4.13",
+    "eslint": "^3.15.0",
+    "eslint-plugin-react": "^6.9.0",
     "highlight.js": "^9.9.0",
     "marked": "^0.3.6",
     "mocha": "^3.2.0",
