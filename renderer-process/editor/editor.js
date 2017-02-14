@@ -16,8 +16,8 @@ let editor = new Vue({
         this.title = arg.title;
         this.index = arg.index;
         this.input = arg.content;
-        console.log(this.input)
-      })
+        console.log(this.input);
+      });
     }
   },
   computed: {

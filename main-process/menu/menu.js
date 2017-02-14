@@ -11,7 +11,7 @@ const template = [
         }
       },
       {
-        label: 'open',
+        label: 'open file',
         click(item, focusedWindow){
           dialog.showOpenDialog({
               title:'open file or directory mType',
@@ -19,9 +19,9 @@ const template = [
                   {name:'Markdown Files',extensions:['md']},
                   {name:'All Files',extensions:['*']}
               ],
-              properties:['openFile','openDirectory']
+              properties:['openFile']
           },(path)=>{
-              focusedWindow.webContents.send('open-file-path',path)
+              focusedWindow.webContents.send('open-file',path)
           })
         }
       },
