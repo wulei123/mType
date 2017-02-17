@@ -14,14 +14,25 @@ const template = [
         label: 'open file',
         click(item, focusedWindow){
           dialog.showOpenDialog({
-              title:'open file or directory mType',
+              title:'open file mType',
               filters:[
                   {name:'Markdown Files',extensions:['md']},
                   {name:'All Files',extensions:['*']}
               ],
               properties:['openFile']
           },(path)=>{
-              focusedWindow.webContents.send('open-file',path)
+              focusedWindow.webContents.send('open-file-path',path)
+          })
+        }
+      },
+      {
+        label: 'open directory',
+        click(item,focusedWindow){
+          dialog.showOpenDialog({
+            title:'open directory mType',
+            properties:['openDirectory']
+          },(path)=>{
+            focusedWindow.webContents.send('open-directory',path)
           })
         }
       },

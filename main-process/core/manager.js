@@ -7,7 +7,6 @@ ipcMain.on('content-to-title',(event,arg)=>{
 	event.sender.send('title-get-values',arg)
 })
 
-
 ipcMain.on('to-save-file',(event,arg)=>{
 	console.log(arg)
 	dialog.showSaveDialog({
@@ -23,14 +22,5 @@ ipcMain.on('to-save-file',(event,arg)=>{
 	})
 })
 ipcMain.on('to-open-file',(event,arg)=>{
-	dialog.showOpenDialog({
-		title:'open file or directory mType',
-		filters:[
-			{name:'Markdown Files',extensions:['md']},
-			{name:'All Files',extensions:['*']}
-		],
-		properties:['openFile']
-	},(filepath)=>{
-		event,sender.send('open-file',filepath)
-	})
+	event.sender.send('open-file',arg)
 })

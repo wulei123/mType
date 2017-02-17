@@ -87,8 +87,9 @@ let tabs = new Vue({
 			})
 		},
 		openFile:function (){
-			ipcRenderer.on('open-file-path',(event,arg)=>{
-				alert(arg)
+			ipcRenderer.on('open-file',(event,arg)=>{
+				console.log(arg)
+				this.tabs.push(arg)			
 			})
 		}
 	}
