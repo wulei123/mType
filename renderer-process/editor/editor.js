@@ -1,4 +1,5 @@
 const {ipcRenderer} = require('electron')
+const Vue = require('vue/dist/vue.common')
 let marked = require('marked')
 let highlight = require('highlight.js')
 

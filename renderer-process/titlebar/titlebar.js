@@ -1,6 +1,7 @@
 const {ipcRenderer} = require('electron')
 const {dialog} = require('electron').remote
 const fs = require('fs')
+const Vue = require('vue/dist/vue.common')
 
 let tabs = new Vue({
 	el: '#tabs',
